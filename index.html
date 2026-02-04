@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugging My Heart... 💻❤️</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="matrix-bg" id="matrixBg"></div>
+    
+    <div class="terminal-container" id="terminalContainer">
+        
+        <!-- Screen 1: Terminal Boot -->
+        <div class="screen active" id="bootScreen">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">heart.exe</span>
+                </div>
+                <div class="terminal-body">
+                    <div id="bootText"></div>
+                    <span class="cursor-blink">_</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 2: Code Editor -->
+        <div class="screen" id="codeScreen">
+            <div class="code-editor">
+                <div class="editor-header">
+                    <div class="tab active">MyFeelings.js</div>
+                    <div class="tab">heart.config</div>
+                    <div class="tab">love.json</div>
+                </div>
+                <div class="editor-body">
+                    <pre class="code-block" id="codeBlock"></pre>
+                </div>
+                <button class="btn btn-run" onclick="compileCode()">
+                    <span>▶</span> Run Code
+                </button>
+            </div>
+        </div>
+
+        <!-- Screen 3: Git Commit History -->
+        <div class="screen" id="gitScreen">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">git log --author="MyHeart"</span>
+                </div>
+                <div class="terminal-body git-log">
+                    <div class="git-commit" style="animation-delay: 0.2s">
+                        <span class="commit-hash">a3f5c21</span>
+                        <span class="commit-message">feat: First eye contact - initialization complete</span>
+                        <span class="commit-date">6 months ago</span>
+                    </div>
+                    <div class="git-commit" style="animation-delay: 0.4s">
+                        <span class="commit-hash">b7d92e4</span>
+                        <span class="commit-message">fix: Heart rate spike when you smiled</span>
+                        <span class="commit-date">5 months ago</span>
+                    </div>
+                    <div class="git-commit" style="animation-delay: 0.6s">
+                        <span class="commit-hash">c1a8f33</span>
+                        <span class="commit-message">refactor: Reorganized entire life priorities</span>
+                        <span class="commit-date">4 months ago</span>
+                    </div>
+                    <div class="git-commit" style="animation-delay: 0.8s">
+                        <span class="commit-hash">d9e4b77</span>
+                        <span class="commit-message">feat: Added you to all future plans</span>
+                        <span class="commit-date">3 months ago</span>
+                    </div>
+                    <div class="git-commit" style="animation-delay: 1s">
+                        <span class="commit-hash">e2f1c88</span>
+                        <span class="commit-message">merge: Merged your happiness with mine</span>
+                        <span class="commit-date">2 months ago</span>
+                    </div>
+                    <div class="git-commit" style="animation-delay: 1.2s">
+                        <span class="commit-hash">f5a3d99</span>
+                        <span class="commit-message">chore: Can't stop thinking about you (bug or feature?)</span>
+                        <span class="commit-date">1 month ago</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="showNextScreen('bugScreen')">
+                    git push origin proposal
+                </button>
+            </div>
+        </div>
+
+        <!-- Screen 4: Stack Overflow Question -->
+        <div class="screen" id="bugScreen">
+            <div class="stackoverflow">
+                <div class="so-header">
+                    <h2>💬 StackOverflow</h2>
+                    <div class="so-user">
+                        <span>💻 Desperately_In_Love</span>
+                    </div>
+                </div>
+                <div class="so-question">
+                    <h3>⬆ 999,999 votes</h3>
+                    <h2>How do I tell someone they're my favorite notification?</h2>
+                    <div class="so-tags">
+                        <span class="tag">love</span>
+                        <span class="tag">heart.js</span>
+                        <span class="tag">valentine</span>
+                        <span class="tag">forever-loop</span>
+                    </div>
+                    <p class="so-body">
+                        I've tried everything: flowers(), chocolates(), and even poems.compile(). 
+                        But nothing seems to express how I feel. Every time I see them, my heart 
+                        throws an UnhandledCuteness exception. Help?
+                    </p>
+                </div>
+                <div class="so-answer">
+                    <h3>✅ Accepted Answer ⬆ 1,000,000 votes</h3>
+                    <p class="so-body">
+                        Have you tried using the <code>valentineProposal()</code> method? 
+                        It's a bit old-school but highly effective. Here's a code snippet:
+                    </p>
+                    <div class="code-snippet">
+                        <code>if (you === myValentine) {<br>
+                        &nbsp;&nbsp;happiness = Infinity;<br>
+                        }</code>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="showNextScreen('debugScreen')">
+                    Implement Solution →
+                </button>
+            </div>
+        </div>
+
+        <!-- Screen 5: Debugging Session -->
+        <div class="screen" id="debugScreen">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">debugger - breakpoint.love</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="debug-console" id="debugConsole"></div>
+                </div>
+                <button class="btn btn-primary" onclick="showNextScreen('apiScreen')">
+                    Continue Debugging...
+                </button>
+            </div>
+        </div>
+
+        <!-- Screen 6: API Request -->
+        <div class="screen" id="apiScreen">
+            <div class="api-container">
+                <h2 class="api-title">🌐 Making API Call to Heart.io</h2>
+                <div class="api-request">
+                    <div class="request-line">
+                        <span class="method">POST</span>
+                        <span class="endpoint">/api/v1/valentine/proposal</span>
+                    </div>
+                    <div class="request-headers">
+                        <div class="header-line">Authorization: Bearer my_entire_heart</div>
+                        <div class="header-line">Content-Type: application/love+json</div>
+                        <div class="header-line">X-Forever: true</div>
+                    </div>
+                    <div class="request-body">
+<pre>{
+  "sender": "Me",
+  "recipient": "You",
+  "message": "Will you be my Valentine?",
+  "sincerity": 100,
+  "duration": "Forever",
+  "attachments": [
+    "roses.jpg",
+    "chocolate.png",
+    "my_heart.exe"
+  ]
+}</pre>
+                    </div>
+                </div>
+                <button class="btn btn-loading" id="sendApiBtn" onclick="sendApiRequest()">
+                    <span class="spinner"></span> Send Request
+                </button>
+                <div class="api-response" id="apiResponse"></div>
+            </div>
+        </div>
+
+        <!-- Screen 7: The Proposal -->
+        <div class="screen" id="proposalScreen">
+            <div class="proposal-container">
+                <div class="glitch-text" data-text="SYSTEM ALERT">SYSTEM ALERT</div>
+                <h1 class="proposal-title">❤️ Critical Love Exception ❤️</h1>
+                <div class="error-box">
+                    <div class="error-header">
+                        <span class="error-icon">⚠️</span>
+                        <span>UnhandledLoveException</span>
+                    </div>
+                    <div class="error-body">
+                        <p><strong>Error:</strong> Cannot continue life without you</p>
+                        <p><strong>Line:</strong> Every single day</p>
+                        <p><strong>Stack Trace:</strong></p>
+                        <pre class="stack-trace">
+at MyHeart.beat(feelings.js:143)
+at Brain.think(thoughts.js:247)
+at Soul.yearn(forever.js:∞)
+at Me.askYou(valentine.js:14)</pre>
+                        <p class="error-message">
+                            <strong>Debug Message:</strong><br>
+                            My code won't compile without you.<br>
+                            My functions won't execute without your smile.<br>
+                            My loops are infinite when I think of you.
+                        </p>
+                    </div>
+                </div>
+                <h2 class="proposal-question">
+                    So... will you be my <span class="highlight">Valentine</span>?
+                </h2>
+                <div class="button-group">
+                    <button class="btn btn-yes" onclick="handleYes()">
+                        return true; ✓
+                    </button>
+                    <button class="btn btn-no" id="noBtn" onmouseover="moveNoButton()" onclick="handleNo()">
+                        return false; ✗
+                    </button>
+                </div>
+                <p class="hint" id="hint"></p>
+            </div>
+        </div>
+
+        <!-- Screen 8: Success -->
+        <div class="screen" id="successScreen">
+            <div class="success-container">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">love.exe - SUCCESS</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="success-ascii">
+<pre>
+    ♥♥♥♥♥♥   ♥♥♥♥♥♥
+  ♥♥♥♥♥♥♥♥♥ ♥♥♥♥♥♥♥♥♥
+ ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+ ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+ ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+  ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+   ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+     ♥♥♥♥♥♥♥♥♥♥♥♥♥
+       ♥♥♥♥♥♥♥♥♥
+         ♥♥♥♥♥
+           ♥
+</pre>
+                        </div>
+                        <div class="success-output" id="successOutput"></div>
+                    </div>
+                </div>
+                <div class="final-stats">
+                    <h2>💕 Relationship Initialized Successfully 💕</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Happiness Level</div>
+                            <div class="stat-value">∞</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Love Version</div>
+                            <div class="stat-value">♥.∞.∞</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Commitment Status</div>
+                            <div class="stat-value">DEPLOYED</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Time Remaining</div>
+                            <div class="stat-value">FOREVER</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
